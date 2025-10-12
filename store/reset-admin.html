@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Admin Panel - PIXMOS</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            color: white;
+        }
+        
+        .reset-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        
+        .pixmos-logo {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 0.75rem;
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            transform: rotate(45deg);
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+        }
+        
+        .logo-triangle {
+            position: absolute;
+            bottom: 3px;
+            right: 3px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #1f2937;
+            transform: rotate(180deg);
+        }
+        
+        h1 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .reset-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            min-width: 200px;
+        }
+        
+        .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        .admin-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+        
+        .admin-btn:hover {
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .status {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .status.success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .status.error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="reset-container">
+        <div class="logo">
+            <div class="pixmos-logo">
+                <div class="logo-shape"></div>
+                <div class="logo-triangle"></div>
+            </div>
+            PIXMOS
+        </div>
+        
+        <h1>🔧 Admin Panel Reset</h1>
+        <p>If your admin panel is stuck with overlapping modals or not responding, use the buttons below to reset it.</p>
+        
+        <button class="reset-btn" onclick="resetAdminPanel()">
+            🔄 Reset Admin Panel
+        </button>
+        
+        <button class="reset-btn admin-btn" onclick="openAdminPanel()">
+            🚀 Open Admin Panel
+        </button>
+        
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function resetAdminPanel() {
+            const status = document.getElementById('status');
+            
+            try {
+                // Clear localStorage admin states
+                localStorage.removeItem('editingProductId');
+                localStorage.removeItem('deletingProductId');
+                
+                // Show success message
+                status.className = 'status success';
+                status.style.display = 'block';
+                status.innerHTML = '✅ Admin panel reset successfully! You can now open the admin panel.';
+                
+                console.log('🔧 Admin panel reset from external reset page');
+                
+            } catch (error) {
+                status.className = 'status error';
+                status.style.display = 'block';
+                status.innerHTML = '❌ Error resetting admin panel: ' + error.message;
+            }
+        }
+        
+        function openAdminPanel() {
+            // First reset, then open
+            resetAdminPanel();
+            
+            // Wait a moment then open admin panel
+            setTimeout(() => {
+                window.open('admin.html', '_blank');
+            }, 500);
+        }
+        
+        // Auto-reset on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            resetAdminPanel();
+        });
+    </script>
+</body>
+</html>
