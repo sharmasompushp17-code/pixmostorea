@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIXMOS - Premium Electronics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>
+                        <div class="pixmos-logo">
+                            <div class="logo-shape"></div>
+                            <div class="logo-triangle"></div>
+                        </div>
+                        PIXMOS
+                    </h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search products...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="user-account" id="userAccount">
+                        <a href="login.html" class="login-link" id="loginLink">
+                            <i class="fas fa-user"></i>
+                            <span>Login</span>
+                        </a>
+                    </div>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <div class="menu-toggle" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Poster Slider Section -->
+    <section id="home" class="poster-slider">
+        <div class="slider-container">
+            <div class="slider-wrapper" id="sliderWrapper">
+                <!-- Posters will be loaded dynamically -->
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn" onclick="previousSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next-btn" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                <!-- Dots will be generated dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="smartphones">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Smartphones</h3>
+                    <p>Latest mobile devices</p>
+                </div>
+                <div class="category-card" data-category="laptops">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Laptops</h3>
+                    <p>High-performance computers</p>
+                </div>
+                <div class="category-card" data-category="headphones">
+                    <i class="fas fa-headphones"></i>
+                    <h3>Audio</h3>
+                    <p>Premium sound experience</p>
+                </div>
+                <div class="category-card" data-category="accessories">
+                    <i class="fas fa-plug"></i>
+                    <h3>Accessories</h3>
+                    <p>Essential tech accessories</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="products-header">
+                <h2>Featured Products</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="smartphones">Smartphones</button>
+                    <button class="filter-btn" data-filter="laptops">Laptops</button>
+                    <button class="filter-btn" data-filter="headphones">Audio</button>
+                    <button class="filter-btn" data-filter="accessories">Accessories</button>
+                    <button class="filter-btn refresh-btn" onclick="refreshProducts()" style="background: #10b981; color: white;">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About TechStore</h2>
+                    <p>We are your trusted partner for premium electronics and technology products. With over 10 years of experience, we provide authentic products with warranty and excellent customer service.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h4>Free Shipping</h4>
+                            <p>Free delivery on orders over ₹4,000</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Warranty</h4>
+                            <p>1-year warranty on all products</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <h4>24/7 Support</h4>
+                            <p>Round-the-clock customer support</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-placeholder">
+                        <i class="fas fa-store"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Tech Street, Digital City, TC 12345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@techstore.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: ₹<span id="cartTotal">0</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-bolt"></i> TechStore</h3>
+                    <p>Your trusted partner for premium electronics and technology products.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Audio</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PIXMOS. All rights reserved. | <a href="admin.html" style="color: #3b82f6; text-decoration: none;">Admin Panel</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
