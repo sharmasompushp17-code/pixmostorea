@@ -1,2 +1,0 @@
-# pixmostorea
-GOOD STORE OKAY 
